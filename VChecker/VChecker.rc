@@ -1,0 +1,210 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\VChecker.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""afxres.rc""     // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\VChecker.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_VCHECKER_DIALOG DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+FONT 9, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Button1",IDC_BUTTON1,55,63,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "Exit",IDC_BUTTON_EXIT,258,7,50,14,NOT WS_VISIBLE
+END
+
+IDD_DIALOG_V_SHOW_DATA DIALOG  0, 0, 96, 51
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    RTEXT           "数据",IDC_STATIC_DATA,0,1,58,30,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "文本",IDC_STATIC_TEXT,0,32,90,15,NOT WS_VISIBLE | WS_BORDER
+END
+
+IDD_DIALOG_V_IDLING DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "IDC_STATIC_TIME",IDC_STATIC_TIME,115,19,91,38,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "IDC_STATIC_DATE",IDC_STATIC_DATE,115,69,91,22,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "IDC_STATIC_WEEK",IDC_STATIC_WEEK,115,89,91,22,NOT WS_VISIBLE | WS_BORDER
+    RTEXT           "LON",IDC_STATIC_LON,125,118,44,22,NOT WS_VISIBLE | WS_BORDER
+    RTEXT           "LON1",IDC_STATIC_LON1,169,118,29,22,NOT WS_VISIBLE | WS_BORDER
+    RTEXT           "LAT",IDC_STATIC_LAT,125,140,44,22,NOT WS_VISIBLE | WS_BORDER
+    RTEXT           "LAT1",IDC_STATIC_LAT1,169,140,29,22,NOT WS_VISIBLE | WS_BORDER
+END
+
+IDD_DIALOG_V_MAIN DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+END
+
+IDD_DIALOG_V_CRUISE DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "时间",IDC_STATIC_TIME,105,4,111,39,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "时速",IDC_STATIC_SS,128,136,62,27,NOT WS_VISIBLE | WS_BORDER
+END
+
+IDD_DIALOG_V_SPORTS DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "车速",IDC_STATIC_CS,36,113,53,27,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "转速",IDC_STATIC_ZS,230,113,53,27,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "车速指针",IDC_STATIC_CS_POINTER,67,54,64,70,NOT WS_VISIBLE | WS_BORDER
+    CTEXT           "转速指针",IDC_STATIC_ZS_POINTER,224,54,32,35,NOT WS_VISIBLE | WS_BORDER
+END
+
+IDD_DIALOG_V_DETAIL DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+END
+
+IDD_DIALOG_V_CONFIG DIALOG  0, 0, 325, 205
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "VChecker.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "VChecker.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\bitmap1.bmp"
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\VChecker.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "afxres.rc"     // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

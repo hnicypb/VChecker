@@ -1,0 +1,111 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+RES_BMP_UNIT_BFH        BITMAP                  "res\\单位-百分号.bmp"
+RES_BMP_UNIT_DY         BITMAP                  "res\\单位-电压.bmp"
+RES_BMP_UNIT_D          BITMAP                  "res\\单位-度.bmp"
+RES_BMP_UNIT_JSYH       BITMAP                  "res\\单位-即时油耗.bmp"
+RES_BMP_UNIT            BITMAP                  "res\\单位-空.bmp"
+RES_BMP_UNIT_LC         BITMAP                  "res\\单位-里程.bmp"
+RES_BMP_UNIT_PJYH       BITMAP                  "res\\单位-平均油耗.bmp"
+RES_BMP_UNIT_SS         BITMAP                  "res\\单位-时速.bmp"
+RES_BMP_UNIT_WD         BITMAP                  "res\\单位-温度.bmp"
+RES_BMP_UNIT_ZS         BITMAP                  "res\\单位-转速.bmp"
+RES_BMP_MAIN_DS         BITMAP                  "res\\底-怠速.bmp"
+RES_BMP_MAIN_MX         BITMAP                  "res\\底-行程明细.bmp"
+RES_BMP_MAIN_JJ         BITMAP                  "res\\底-竞技.bmp"
+RES_BMP_MAIN_SZ         BITMAP                  "res\\底-系统设置.bmp"
+RES_BMP_MAIN_XH         BITMAP                  "res\\底-巡航.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_STRING_TITLE        "标题"
+    IDS_STRING_FDJSW        "发动机水温"
+    IDS_STRING_FDJZS        "发动机转速"
+    IDS_STRING_DPDY         "电瓶电压"
+    IDS_STRING_JQWD         "进气温度"
+    IDS_STRING_JSYH         "即时油耗"
+    IDS_STRING_LSPJYH       "历史平均油耗"
+    IDS_STRING_BCXSSJ       "本次行驶时间"
+    IDS_STRING_BCPJSD       "本次平均速度"
+    IDS_STRING_BCSSLC       "本次行驶里程"
+    IDS_STRING_BCPJYH       "本次平均油耗"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_STRING_FDJFH        "发动机负荷"
+    IDS_STRING_DHTQJ        "点火提前角"
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
