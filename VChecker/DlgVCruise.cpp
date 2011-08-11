@@ -46,27 +46,27 @@ int CDlgVCruise::fInitData(void)
 	CVCheckerClsGlobal clsGlobal;
 
 	m_iShowDataBkImg[0] = RES_BMP_UNIT;
-	m_strShowDataText[0] = _T("本次行驶时间"); 
+	m_strShowDataText[0] = clsGlobal.fGetRes(IDS_STRING_BCXSSJ);	//_T("本次行驶时间"); 
 	m_rectShowData[0] =  CRect(16,20,141,80);			
 
 	m_iShowDataBkImg[1] = RES_BMP_UNIT_SS;
-	m_strShowDataText[1] = _T("本次平均速度");
+	m_strShowDataText[1] = clsGlobal.fGetRes(IDS_STRING_BCPJSD);	//_T("本次平均速度");
 	m_rectShowData[1] =	CRect(16,90,141,150);	
 
 	m_iShowDataBkImg[2] = RES_BMP_UNIT_WD;
-	m_strShowDataText[2] = _T("发动机水温");
+	m_strShowDataText[2] = clsGlobal.fGetRes(IDS_STRING_FDJSW);		//_T("发动机水温");
 	m_rectShowData[2] =	CRect(16,160,141,220);	
 
 	m_iShowDataBkImg[3] = RES_BMP_UNIT_LC;
-	m_strShowDataText[3] = _T("本次行驶里程");
+	m_strShowDataText[3] = clsGlobal.fGetRes(IDS_STRING_BCXSLC);	//_T("本次行驶里程");
 	m_rectShowData[3] = CRect(339,20,463,80);
 
 	m_iShowDataBkImg[4] = RES_BMP_UNIT_PJYH;
-	m_strShowDataText[4] = _T("本次平均油耗");
+	m_strShowDataText[4] = clsGlobal.fGetRes(IDS_STRING_BCPJYH);	//_T("本次平均油耗");
 	m_rectShowData[4] = CRect(339,90,463,150);
 
 	m_iShowDataBkImg[5] = RES_BMP_UNIT_JSYH;
-	m_strShowDataText[5] = _T("即时油耗");
+	m_strShowDataText[5] = clsGlobal.fGetRes(IDS_STRING_JSYH);		//_T("即时油耗");
 	m_rectShowData[5] = CRect(339,160,463,220);
 
 	m_pointCircle = CPoint(240,145);

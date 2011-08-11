@@ -16,32 +16,12 @@
 #define PANEL_XCMX	107			//行程明细
 #define PANEL_XTSZ	108			//系统设置
 
-#include "e:\Yipb\V-Checker\VChecker\VCheckerResZhCn\resource.h"
-//
-////资源文件
-//#define RES_BMP_MAIN_DS			101			//怠速界面底图
-//#define RES_BMP_MAIN_XH			102			//巡航界面底图
-//#define RES_BMP_MAIN_JJ			103			//竞技界面底图
-//#define RES_BMP_MAIN_MX			104			//行程明细界面底图
-//#define RES_BMP_MAIN_SZ			105			//系统设置界面底图
-//
-//#define RES_BMP_UNIT			200			//无单位底图
-//#define RES_BMP_UNIT_WD			201			//温度底图
-//#define RES_BMP_UNIT_DY			202			//电压底图
-//#define RES_BMP_UNIT_ZS			203			//转速底图
-//#define RES_BMP_UNIT_PJYH		204			//平均油耗底图
-//#define RES_BMP_UNIT_JSYH		205			//即时油耗底图
-//#define RES_BMP_UNIT_BFH		206			//百分号底图
-//#define RES_BMP_UNIT_LC			207			//里程底图
-//#define RES_BMP_UNIT_D			208			//度底图
-//#define RES_BMP_UNIT_SS			209			//时速图
-//
-//#define RES_BMP_XH_POINTER		301			//巡航指针
-//#define RES_BMP_XH_COMPASS		302			//巡航指南针
-//#define RES_BMP_JJ_POINTER		303			//竞技指针
+#define RES_STRING_MAX_LEN	50	//字符最大长度
+//使用资源的头文件，多语言的时候修改该头文件即可
+#include "e:\Yipb\Projects\VChecker\VCheckerResZhCn\resource.h"
+
 /*=====全局宏定义end=====*/
 
-/*=====数据结构定义=====*/
 class CVCheckerClsGlobal
 {
 protected:
@@ -67,7 +47,7 @@ public:
 	CString fGetScreenResolution(void);
 	// 读二进制文件
 	int fReadBin(void);
-	// 根据ID获取资源文件
+	// 根据ID获取字符串
 	CString fGetRes(int iResID);
 	// 根据圆心，半径，角度画指针到DC上
 	int fDrawPoint(CDC * dc,CPoint pointCircle,int iRaduis,double dAngle,int iStart = 0,int iLen = 0);

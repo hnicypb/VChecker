@@ -100,27 +100,27 @@ int CDlgVIdling::fInitData(void)
 	CVCheckerClsGlobal clsGlobal;
 
 	m_iShowDataBkImg[0] = RES_BMP_UNIT_WD;
-	m_strShowDataText[0] = _T("发动机水温");
+	m_strShowDataText[0] = clsGlobal.fGetRes(IDS_STRING_FDJSW);	//_T("发动机水温");
 	m_rectShowData[0] =  CRect(28,20,152,80);		
 
 	m_iShowDataBkImg[1] = RES_BMP_UNIT_WD;
-	m_strShowDataText[1] = _T("发动机转速");
+	m_strShowDataText[1] = clsGlobal.fGetRes(IDS_STRING_FDJZS);	//_T("发动机转速");
 	m_rectShowData[1] =	CRect(28,90,152,150);	
 
 	m_iShowDataBkImg[2] = RES_BMP_UNIT_WD;
-	m_strShowDataText[2] = _T("电瓶电压");
+	m_strShowDataText[2] = clsGlobal.fGetRes(IDS_STRING_DPDY);	 //_T("电瓶电压");
 	m_rectShowData[2] =	CRect(28,160,152,220);	
 
 	m_iShowDataBkImg[3] = RES_BMP_UNIT_WD;
-	m_strShowDataText[3] = _T("进气温度");
+	m_strShowDataText[3] = clsGlobal.fGetRes(IDS_STRING_JQWD);	//_T("进气温度");
 	m_rectShowData[3] = CRect(328,20,452,80);
 
 	m_iShowDataBkImg[4] = RES_BMP_UNIT_WD;
-	m_strShowDataText[4] = _T("即时油耗");
+	m_strShowDataText[4] = clsGlobal.fGetRes(IDS_STRING_JSYH);	//_T("即时油耗");
 	m_rectShowData[4] = CRect(328,90,452,150);
 
 	m_iShowDataBkImg[5] = RES_BMP_UNIT_WD;
-	m_strShowDataText[5] = _T("历史平均油耗");
+	m_strShowDataText[5] =clsGlobal.fGetRes(IDS_STRING_LSPJYH);	//_T("历史平均油耗");
 	m_rectShowData[5] = CRect(328,160,452,220);
 
 	return 0;

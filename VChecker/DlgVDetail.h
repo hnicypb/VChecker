@@ -15,7 +15,7 @@ public:
 	enum { IDD = IDD_DIALOG_V_DETAIL };
 protected:	
 	CBitmap m_cBitmapBkBmp;						//±³¾°Í¼Æ¬
-	CDC		m_memdcBkBmp;						//±³¾°Í¼Æ¬DC
+	CDC		m_memdcBkBmp;						//±³¾°Í¼Æ¬DC          
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö

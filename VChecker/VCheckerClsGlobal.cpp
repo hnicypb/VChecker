@@ -117,74 +117,9 @@ CString CVCheckerClsGlobal::fGetScreenResolution(void)
 // 读二进制文件
 int CVCheckerClsGlobal::fReadBin(void)
 {
-
 	return 0;
 }
 
-// 根据ID获取资源文件
-CString CVCheckerClsGlobal::fGetRes(int iResID)
-{
-	CString strReturn = m_strAppPath;
-	switch (iResID)
-	{
-	case RES_BMP_MAIN_DS:
-		strReturn = strReturn + _T("\\res\\底-怠速.bmp");
-		break;
-	case RES_BMP_MAIN_XH:
-		strReturn = strReturn + _T("\\res\\底-巡航.bmp");
-		break;
-	case RES_BMP_MAIN_JJ:
-		strReturn = strReturn + _T("\\res\\底-竞技.bmp");
-		break;		
-	case RES_BMP_MAIN_MX:
-		strReturn = strReturn + _T("\\res\\底-行程明细.bmp");
-		break;		
-	case RES_BMP_MAIN_SZ:
-		strReturn = strReturn + _T("\\res\\底-系统设置.bmp");
-		break;		
-	case RES_BMP_UNIT:
-		strReturn = strReturn + _T("\\res\\单位-空.bmp");
-		break;
-	case RES_BMP_UNIT_WD:
-		strReturn = strReturn + _T("\\res\\单位-温度.bmp");
-		break;
-	case RES_BMP_UNIT_DY:
-		strReturn = strReturn + _T("\\res\\单位-电压.bmp");
-		break;
-	case RES_BMP_UNIT_ZS:
-		strReturn = strReturn + _T("\\res\\单位-转速.bmp");
-		break;
-	case RES_BMP_UNIT_PJYH:
-		strReturn = strReturn + _T("\\res\\单位-平均油耗.bmp");
-		break;
-	case RES_BMP_UNIT_JSYH:
-		strReturn = strReturn + _T("\\res\\单位-即时油耗.bmp");
-		break;
-	case RES_BMP_UNIT_BFH:
-		strReturn = strReturn + _T("\\res\\单位-百分号.bmp");
-		break;
-	case RES_BMP_UNIT_LC:
-		strReturn = strReturn + _T("\\res\\单位-里程.bmp");
-		break;
-	case RES_BMP_UNIT_D:
-		strReturn = strReturn + _T("\\res\\单位-度.bmp");
-		break;	
-	case RES_BMP_UNIT_SS:
-		strReturn = strReturn + _T("\\res\\单位-时速.bmp");
-		break;			
-	//case RES_BMP_XH_POINTER:
-	//	strReturn = strReturn +  _T("\\res\\巡航-表针.bmp");
-	//	break;
-	//case RES_BMP_XH_COMPASS:
-	//	strReturn = strReturn + _T("\\res\\巡航-指南针.bmp");
-	//	break;
-	//case RES_BMP_JJ_POINTER:
-	//	strReturn = strReturn + _T("\\res\\竞技-表针.bmp");
-	//	break;	
-	}
-
-	return strReturn;
-}
 
 /* 根据圆心，半径，角度画指针到DC上
 	dc：目标DC
@@ -261,20 +196,24 @@ int CVCheckerClsGlobal::fDrawPoint(CDC * dc,CPoint pointCircle,int iRaduis,doubl
 	return 0;
 }
 
+// 根据ID获取字符串
+CString CVCheckerClsGlobal::fGetRes(int iResID)
+{
+	TCHAR sz[RES_STRING_MAX_LEN]; 
+	LoadString(g_hResDll,iResID,sz,RES_STRING_MAX_LEN);
+
+	return CString(sz);
+}
 
 // 根据资源ID从资源库加载Bmp图片
 int CVCheckerClsGlobal::fLoadBitmap(HBITMAP hBmp, int iResID)
 {
-	HINSTANCE hResDll = LoadLibrary(_T("VCheckerResZhCn.dll"));
-	if (hResDll == NULL)
+	hBmp = LoadBitmap(g_hResDll,MAKEINTRESOURCE(iResID));
+	if (hBmp == NULL)
 	{
-		AfxMessageBox(_T("加载资源失败!"));
+		AfxMessageBox(_T("调用位图资源失败"));
 		return -1;
-	}	
-
-	hBmp = LoadBitmap(hResDll,MAKEINTRESOURCE(iResID));
-
-	FreeLibrary(hResDll);	
-
+	}
 	return 0;
 }
+

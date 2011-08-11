@@ -97,12 +97,13 @@ END_MESSAGE_MAP()
 int CDlgVSports::fInitData(void)
 {
 	CVCheckerClsGlobal clsGlobal;
+
 	m_iShowDataBkImg[0] = RES_BMP_UNIT_BFH;
-	m_strShowDataText[0] = _T("发动机负荷");
+	m_strShowDataText[0] = clsGlobal.fGetRes(IDS_STRING_FDJFH);		//m_strShowDataText[1] = _T("发动机负荷");
 	m_rectShowData[0] =  CRect(178,23,302,83);		
 
 	m_iShowDataBkImg[1] = RES_BMP_UNIT_D;
-	m_strShowDataText[1] = _T("点火提前角");
+	m_strShowDataText[1] = clsGlobal.fGetRes(IDS_STRING_DHTQJ);     //m_strShowDataText[1] = _T("点火提前角");
 	m_rectShowData[1] =	CRect(178,160,302,220);	
 
 	m_pointCircleCs = CPoint(97,123);
