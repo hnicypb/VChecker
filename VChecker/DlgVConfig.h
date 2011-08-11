@@ -15,10 +15,12 @@ public:
 	enum { IDD = IDD_DIALOG_V_CONFIG };
 
 protected:
-	HBITMAP			m_hBkBmp;					//±³¾°Í¼Æ¬
+	CBitmap m_cBitmapBkBmp;						//±³¾°Í¼Æ¬
+	CDC		m_memdcBkBmp;						//±³¾°Í¼Æ¬DC
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual BOOL OnInitDialog();
 
 	DECLARE_MESSAGE_MAP()
 public:

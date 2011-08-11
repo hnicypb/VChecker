@@ -14,11 +14,12 @@ CDlgVCruise::CDlgVCruise(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgVCruise::IDD, pParent)
 	, m_strSS(_T(""))
 {
-	m_hBkBmp = LoadBitmap(g_hResDll,MAKEINTRESOURCE(RES_BMP_MAIN_XH));
 }
 
 CDlgVCruise::~CDlgVCruise()
-{
+{	
+	DeleteDC(m_memdcBkBmp);
+	DeleteObject(m_cBitmapBkBmp);
 }
 
 void CDlgVCruise::DoDataExchange(CDataExchange* pDX)
@@ -99,8 +100,22 @@ BOOL CDlgVCruise::OnInitDialog()
 	m_dlgShowData[4].fSetData(_T("5.0"));
 	m_dlgShowData[5].fSetData(_T("0.8"));
 
-
 	fEnableAutoRefresh(TRUE);
+
+	//初始化背景图片DC
+	HBITMAP hBmpBk = LoadBitmap(g_hResDll,MAKEINTRESOURCE(RES_BMP_MAIN_XH));
+	CRect rect; 
+	HBITMAP hOldBmp = NULL;	
+
+	GetWindowRect(&rect); 	
+	if (m_memdcBkBmp.m_hDC == NULL)	
+		m_memdcBkBmp.CreateCompatibleDC(this->GetDC());
+	if (m_cBitmapBkBmp.m_hObject == NULL)
+		m_cBitmapBkBmp.CreateCompatibleBitmap(this->GetDC(),rect.Width(),rect.Height());	
+	hOldBmp = (HBITMAP)m_memdcBkBmp.SelectObject(hBmpBk);			
+
+	if(hOldBmp)
+		DeleteObject(hOldBmp);
 
 	return TRUE;
 }
@@ -245,7 +260,7 @@ void CDlgVCruise::OnPaint()
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	CDC *pDC =  this->GetDC();
 	
-	if (m_hBkBmp != NULL)
+	if (m_memdcBkBmp.m_hDC != NULL)
 	{
 		CString strTime;	
 		CTime time = CTime::GetCurrentTime();
@@ -258,18 +273,9 @@ void CDlgVCruise::OnPaint()
 		GetWindowRect(&rect); 	
 		memDC.CreateCompatibleDC(pDC); 	
 
-		CBitmap cBitmap; 
 		CBitmap* pOldMemBmp = NULL; 
-		HBITMAP hOldBmp = NULL;	
-
-		CDC memdcBmp;
-		memdcBmp.CreateCompatibleDC(pDC);
-		hOldBmp = (HBITMAP)memdcBmp.SelectObject(m_hBkBmp);		
-		cBitmap.CreateCompatibleBitmap(pDC,rect.Width(),rect.Height());
-		pOldMemBmp = memDC.SelectObject(&cBitmap);
-		memDC.BitBlt(0,0,rect.Width(),rect.Height(),&memdcBmp,0,0,SRCCOPY);
-		if(hOldBmp)
-			DeleteObject(hOldBmp);
+		pOldMemBmp = memDC.SelectObject(&m_cBitmapBkBmp);
+		memDC.BitBlt(0,0,rect.Width(),rect.Height(),&m_memdcBkBmp,0,0,SRCCOPY);
 
 		memDC.SetBkMode(TRANSPARENT);	
 		CFont fontText;
@@ -345,12 +351,8 @@ void CDlgVCruise::OnPaint()
 		if(pOldMemBmp)   
 			memDC.SelectObject(pOldMemBmp); 
 
-		DeleteObject(hOldBmp);
-		DeleteDC(memdcBmp);
-
 		DeleteObject(pOldMemBmp);
 		DeleteObject(fontText);
-		DeleteObject(cBitmap);
 		DeleteDC(memDC);		
 	}
 }

@@ -20,7 +20,9 @@ protected:
 	CString			m_strShowDataText[7];		//数据块文本显示信息
 	CDlgVShowData	m_dlgShowData[6];			//数据显示块
 
-	HBITMAP			m_hBkBmp;					//背景图片
+	CBitmap m_cBitmapBkBmp;						//背景图片
+	CDC		m_memdcBkBmp;						//背景图片DC
+
 	CPoint			m_pointCircle;			//圆心
 	WORD			m_dRaduis;				//半径
 

@@ -13,13 +13,12 @@ IMPLEMENT_DYNAMIC(CDlgVDetail, CDialog)
 CDlgVDetail::CDlgVDetail(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgVDetail::IDD, pParent)
 {
-	CVCheckerClsGlobal clsGlobal;
-	m_strBkBmpFile = clsGlobal.fGetRes(RES_BMP_MAIN_MX);
-	m_hBkBmp = LoadBitmap(g_hResDll,MAKEINTRESOURCE(RES_BMP_MAIN_MX));
 }
 
 CDlgVDetail::~CDlgVDetail()
 {
+	DeleteDC(m_memdcBkBmp);
+	DeleteObject(m_cBitmapBkBmp);
 }
 
 void CDlgVDetail::DoDataExchange(CDataExchange* pDX)
@@ -27,11 +26,33 @@ void CDlgVDetail::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 }
 
+BOOL CDlgVDetail::OnInitDialog() 
+{
+	CDialog::OnInitDialog();
+
+	//初始化背景图片DC
+	HBITMAP hBmpBk = LoadBitmap(g_hResDll,MAKEINTRESOURCE(RES_BMP_MAIN_MX));
+	CRect rect; 
+	HBITMAP hOldBmp = NULL;	
+
+	GetWindowRect(&rect); 	
+	if (m_memdcBkBmp.m_hDC == NULL)	
+		m_memdcBkBmp.CreateCompatibleDC(this->GetDC());
+	if (m_cBitmapBkBmp.m_hObject == NULL)
+		m_cBitmapBkBmp.CreateCompatibleBitmap(this->GetDC(),rect.Width(),rect.Height());	
+	hOldBmp = (HBITMAP)m_memdcBkBmp.SelectObject(hBmpBk);			
+
+	if(hOldBmp)
+		DeleteObject(hOldBmp);
+
+	return TRUE;
+}
 
 BEGIN_MESSAGE_MAP(CDlgVDetail, CDialog)
 	ON_WM_ERASEBKGND()
 	ON_WM_LBUTTONUP()
 	ON_WM_CLOSE()
+	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -40,21 +61,40 @@ END_MESSAGE_MAP()
 BOOL CDlgVDetail::OnEraseBkgnd(CDC* pDC)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if (m_hBkBmp != NULL)
+	return TRUE;
+	return CDialog::OnEraseBkgnd(pDC);
+}
+
+void CDlgVDetail::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	g_pDlg->fSetPanel(point);
+	CDialog::OnLButtonUp(nFlags, point);
+}
+
+void CDlgVDetail::OnClose()
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	CDialog::OnClose();
+}
+
+void CDlgVDetail::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+	// TODO: 在此处添加消息处理程序代码
+	// 不为绘图消息调用 CDialog::OnPaint()
+	CDC *pDC =  this->GetDC();
+	if (m_memdcBkBmp.m_hDC != NULL)
 	{
 		CRect rect; 
 		CDC   memDC; 
 
-		CString strTime;	
-		CTime time = CTime::GetCurrentTime();
-		strTime.Format(_T("%02d:%02d"),time.GetHour(),time.GetMinute());		
-
 		GetWindowRect(&rect); 	
-			
-		HBITMAP hOldBitmap;	
+		memDC.CreateCompatibleDC(pDC); 	
 
-		memDC.CreateCompatibleDC(pDC); 
-		hOldBitmap = (HBITMAP)memDC.SelectObject(m_hBkBmp); 
+		CBitmap* pOldMemBmp = NULL; 
+		pOldMemBmp = memDC.SelectObject(&m_cBitmapBkBmp);
+		memDC.BitBlt(0,0,rect.Width(),rect.Height(),&m_memdcBkBmp,0,0,SRCCOPY);
 
 		memDC.SetBkMode(TRANSPARENT);	
 		//CFont fontText;
@@ -116,29 +156,11 @@ BOOL CDlgVDetail::OnEraseBkgnd(CDC* pDC)
 		//将背景位图复制到窗口客户区 
 		pDC-> BitBlt(0,0,rect.Width(),rect.Height(),&memDC,0,0,SRCCOPY); 
 
-		if(hOldBitmap)   
-			memDC.SelectObject(hOldBitmap); 
+		if(pOldMemBmp)   
+			memDC.SelectObject(pOldMemBmp); 
 
-		
-		DeleteObject(hOldBitmap);
-		//DeleteObject(fontText);		
+		DeleteObject(pOldMemBmp);	
 		DeleteDC(memDC);
-
-		return TRUE;
+		ReleaseDC(pDC);
 	}
-	return CDialog::OnEraseBkgnd(pDC);
-}
-
-void CDlgVDetail::OnLButtonUp(UINT nFlags, CPoint point)
-{
-	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	g_pDlg->fSetPanel(point);
-	CDialog::OnLButtonUp(nFlags, point);
-}
-
-void CDlgVDetail::OnClose()
-{
-	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	DeleteObject(m_hBkBmp);
-	CDialog::OnClose();
 }

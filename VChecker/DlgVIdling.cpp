@@ -13,12 +13,12 @@ IMPLEMENT_DYNAMIC(CDlgVIdling, CDialog)
 CDlgVIdling::CDlgVIdling(CWnd* pParent /*=NULL*/)
 	: CDialog(CDlgVIdling::IDD, pParent)
 {
-	CVCheckerClsGlobal clsGlobal;
-	m_hBkBmp = LoadBitmap(g_hResDll,MAKEINTRESOURCE(RES_BMP_MAIN_DS));
 }
 
 CDlgVIdling::~CDlgVIdling()
 {
+	DeleteDC(m_memdcBkBmp);
+	DeleteObject(m_cBitmapBkBmp);
 }
 
 void CDlgVIdling::DoDataExchange(CDataExchange* pDX)
@@ -62,8 +62,22 @@ BOOL CDlgVIdling::OnInitDialog()
 	m_dlgShowData[4].fSetData(_T("0.8"));
 	m_dlgShowData[5].fSetData(_T("11.0"));
 
-
 	fEnableAutoRefresh(TRUE);
+
+	//初始化背景图片DC
+	HBITMAP hBmpBk = LoadBitmap(g_hResDll,MAKEINTRESOURCE(RES_BMP_MAIN_DS));
+	CRect rect; 
+	HBITMAP hOldBmp = NULL;	
+
+	GetWindowRect(&rect); 	
+	if (m_memdcBkBmp.m_hDC == NULL)	
+		m_memdcBkBmp.CreateCompatibleDC(this->GetDC());
+	if (m_cBitmapBkBmp.m_hObject == NULL)
+		m_cBitmapBkBmp.CreateCompatibleBitmap(this->GetDC(),rect.Width(),rect.Height());	
+	hOldBmp = (HBITMAP)m_memdcBkBmp.SelectObject(hBmpBk);			
+
+	if(hOldBmp)
+		DeleteObject(hOldBmp);
 
 	return TRUE;
 }
@@ -183,14 +197,7 @@ void CDlgVIdling::OnPaint()
 	// 不为绘图消息调用 CDialog::OnPaint()
 
 	CDC *pDC =  this->GetDC();
-	/*if (m_strBkBmpFile != _T(""))
-	{
-		CRect rect; 
-		CDC   memDC; 
-		CBitmap cBitmap; 
-		CBitmap* pOldMemBmp = NULL; */
-
-	if (m_hBkBmp != NULL)
+	if (m_memdcBkBmp.m_hDC != NULL)
 	{	
 		CString strDate;
 		CString strTime;
@@ -236,19 +243,9 @@ void CDlgVIdling::OnPaint()
 		GetWindowRect(&rect); 	
 		memDC.CreateCompatibleDC(pDC); 	
 
-		CBitmap cBitmap; 
 		CBitmap* pOldMemBmp = NULL; 
-		HBITMAP hOldBmp;	
-
-		CDC memdcBmp;
-		memdcBmp.CreateCompatibleDC(pDC);
-		hOldBmp = (HBITMAP)memdcBmp.SelectObject(m_hBkBmp);		
-		cBitmap.CreateCompatibleBitmap(pDC,rect.Width(),rect.Height());
-		pOldMemBmp = memDC.SelectObject(&cBitmap);
-		memDC.BitBlt(0,0,rect.Width(),rect.Height(),&memdcBmp,0,0,SRCCOPY);
-		if(hOldBmp)
-			DeleteObject(hOldBmp);		
-
+		pOldMemBmp = memDC.SelectObject(&m_cBitmapBkBmp);
+		memDC.BitBlt(0,0,rect.Width(),rect.Height(),&m_memdcBkBmp,0,0,SRCCOPY);
 
 		memDC.SetBkMode(TRANSPARENT);
 		CFont fontText;
@@ -391,12 +388,8 @@ void CDlgVIdling::OnPaint()
 		if(pOldMemBmp)   
 			memDC.SelectObject(pOldMemBmp); 
 
-		DeleteDC(memdcBmp);
-		DeleteObject(hOldBmp);
-
 		DeleteObject(pOldMemBmp);
 		DeleteObject(fontText);
-		DeleteObject(cBitmap);
 		DeleteDC(memDC);
 	}
 }

@@ -14,15 +14,17 @@ public:
 // ¶Ô»°¿òÊý¾Ý
 	enum { IDD = IDD_DIALOG_V_DETAIL };
 protected:	
-	CString			m_strBkBmpFile;				//¶Ô»°¿ò±³¾°Í¼Æ¬
+	CBitmap m_cBitmapBkBmp;						//±³¾°Í¼Æ¬
+	CDC		m_memdcBkBmp;						//±³¾°Í¼Æ¬DC
 
-	HBITMAP			m_hBkBmp;
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual BOOL OnInitDialog();
 
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnClose();
+	afx_msg void OnPaint();
 };
