@@ -84,7 +84,7 @@ BEGIN
     IDS_STRING_LSPJYH       "历史平均油耗"
     IDS_STRING_BCXSSJ       "本次行驶时间"
     IDS_STRING_BCPJSD       "本次平均速度"
-    IDS_STRING_BCSSLC       "本次行驶里程"
+    IDS_STRING_BCXSLC       "本次行驶里程"
     IDS_STRING_BCPJYH       "本次平均油耗"
 END
 

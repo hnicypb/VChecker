@@ -680,7 +680,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="echo &quot;更新最新的可执行文件&quot;&#x0D;&#x0A;e:&#x0D;&#x0A;cd \Yipb\Projects\VChecker\VCheckerResZhCn&#x0D;&#x0A;cd STANDARDSDK_500 (ARMV4I)\Release&#x0D;&#x0A;copy *.dll E:\Yipb\V-Checker\VChecker\ExeRelease&#x0D;&#x0A;del D:\SDCard\VChecker\vchecker.exe&#x0D;&#x0A;copy E:\Yipb\Projects\VChecker\ExeRelease\*.exe D:\SDCard\VChecker&#x0D;&#x0A;copy E:\Yipb\\Projects\VChecker\ExeRelease\*.dll D:\SDCard\VChecker&#x0D;&#x0A;"
+				CommandLine="echo &quot;更新最新的可执行文件&quot;&#x0D;&#x0A;e:&#x0D;&#x0A;cd \Yipb\Projects\VChecker\VCheckerResZhCn&#x0D;&#x0A;cd STANDARDSDK_500 (ARMV4I)\Release&#x0D;&#x0A;copy *.dll E:\Yipb\Projects\VChecker\ExeRelease&#x0D;&#x0A;del D:\SDCard\VChecker\vchecker.exe&#x0D;&#x0A;copy E:\Yipb\Projects\VChecker\ExeRelease\*.exe D:\SDCard\VChecker&#x0D;&#x0A;copy E:\Yipb\Projects\VChecker\ExeRelease\*.dll D:\SDCard\VChecker&#x0D;&#x0A;"
 			/>
 			<DeploymentTool
 				ForceDirty="-1"

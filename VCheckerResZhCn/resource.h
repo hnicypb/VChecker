@@ -27,6 +27,7 @@
 #define IDS_STRING_BCXSSJ               124
 #define IDS_STRING_BCPJSD               125
 #define IDS_STRING_BCSSLC               126
+#define IDS_STRING_BCXSLC               126
 #define IDS_STRING_BCPJYH               127
 #define IDS_STRING_FDJFH                129
 #define IDS_STRING130                   130
